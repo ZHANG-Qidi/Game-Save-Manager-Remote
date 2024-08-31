@@ -10,30 +10,23 @@
 2. 服务端启动 SaveLoadManagerServer, 开启服务
 3. 客户端启动 SaveLoadManagerClient, 输入服务端 IP, 读取配置进行管理
 *** Windows
-- SaveLoadManager.exe
-- SaveLoadManagerClient.exe
-- SaveLoadManagerServer.exe
-- 双击启动即可
+- 直接启动 exe 文件即可
 *** Steam Deck
-- 本地管理
+- 本地管理和客户端, 可直接启动或在终端中启动
   #+begin_src bash
+    # 启动本地管理
     ./SaveLoadManager
+    # 启动客户端
+    ./SaveLoadManagerClient
   #+end_src
-  或双击启动
-- 远程管理
-  - 服务端
-    #+begin_src bash
-      ./SaveLoadManagerServer
-    #+end_src
-    - 服务端不可双击启动
-  - 客户端
-    #+begin_src bash
-      ./SaveLoadManagerClient
-    #+end_src
-    - 或双击启动
+- 服务端只能在终端中启动
+  #+begin_src bash
+    # 启动服务端
+    ./SaveLoadManagerClient
+  #+end_src
 - 使用 screen, 后台运行服务端
   1. 解锁 Steam Deck，使用 pacman 和 yay 安装软件包
-     1. 按下 Steam 按键后，切换到电源切换到 Steam Deck 桌面模式，打开 Konsole，输入 passwd 设置账户的密码
+     1. 按下 Steam 按键后, 切换到电源, 切换到 Steam Deck 桌面模式, 打开 Konsole, 输入 passwd 设置账户的密码
         #+begin_src bash
           passwd
         #+end_src
