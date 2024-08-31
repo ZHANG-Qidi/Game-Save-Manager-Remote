@@ -1,0 +1,20 @@
+* Game save remote control - Powered by gRPC
+** 功能简介
+- 本地及远程存档管理
+- 支持 Steam Deck
+** 使用方法
+*** 本地管理
+- 使用 SaveLoadManager 新建游戏进行管理
+*** 远程管理
+1. 使用 SaveLoadManager 在服务端新建游戏, 设置配置文件
+2. 服务端启动 SaveLoadManagerServer, 开启服务
+3. 客户端启动 SaveLoadManagerClient, 输入服务端 IP, 读取配置进行管理
+*** 开发环境需求
+- grpcio, grpcio-tools
+  #+begin_src bash
+    python -m pip install grpcio==1.66.0
+    python -m pip install grpcio-tools==1.66.0
+    python -m pip install protobuf==5.27.2
+
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
+  #+end_src
