@@ -25,11 +25,12 @@
     #+begin_src bash
       ./SaveLoadManagerServer
     #+end_src
+    - 服务端不可双击启动
   - 客户端
     #+begin_src bash
       ./SaveLoadManagerClient
     #+end_src
-    或双击启动
+    - 或双击启动
 - 使用 screen, 后台运行服务端
   1. 解锁 Steam Deck，使用 pacman 和 yay 安装软件包
      1. 按下 Steam 按键后，切换到电源切换到 Steam Deck 桌面模式，打开 Konsole，输入 passwd 设置账户的密码
