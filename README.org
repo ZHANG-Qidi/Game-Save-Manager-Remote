@@ -1,4 +1,4 @@
-* Game save remote control - Powered by gRPC
+* Game save remote control - Powered by gRPC or JSON-RPC
 ** 功能简介
 - 本地及远程存档管理
 - 支持 Steam Deck
@@ -56,6 +56,15 @@
        ./ServerStart.sh
      #+end_src
   5. 只要不重启, 服务能一直运行, 睡眠并不会影响
+*** 添加 JSON-RPC 支持
+- JSON-RPC 服务端
+  - Linux
+    - SaveLoadManagerServer-JSON-RPC
+  - Windows
+    - SaveLoadManagerServer-JSON-RPC.exe
+- JSON-RPC 客户端
+  - SaveLoadManagerClient-JSON-RPC.html
+  - 任意设备用浏览器打开 HTML 即可
 ** 开发环境需求
 - grpcio, grpcio-tools
   #+begin_src bash
