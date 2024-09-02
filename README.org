@@ -73,4 +73,8 @@
     python -m pip install protobuf==5.27.2
 
     python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
+
+    pip install Werkzeug
+    pip install json-rpc
+    pip install requests
   #+end_src

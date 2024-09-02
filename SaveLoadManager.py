@@ -330,21 +330,20 @@ def main():
     def save_list_init_with_comment():
         save_list = SaveLoadManagerFunc.save_list_func(var_game.get(), var_profile.get())
         save_list_no_comment = [save for save in save_list if not '@' in save]
+        save_list_with_comment = [save for save in save_list if '@' in save]
+        if var_file.get() != '':
+            save_list_with_same_comment = [save for save in save_list_with_comment if var_comment.get() == save[save.find('@')+1:save.rfind('.')]]
+        if var_folder.get() != '':
+            save_list_with_same_comment = [save for save in save_list_with_comment if var_comment.get() == save[save.find('@')+1:]]
         for save in save_list_no_comment[3:]:
             SaveLoadManagerFunc.save_delete(var_game.get(), var_profile.get(), save, var_folder.get(), var_file.get())
             save_list.remove(save)
-        save_list_with_comment = []
-        if var_comment.get() != '':
-            if var_file.get() != '':
-                save_list_with_comment = [save for save in save_list if '{}{}'.format(var_comment.get(), pathlib.Path(var_file.get()).suffix) == save[save.find('@')+1:]]
-            if var_folder.get() != '':
-                save_list_with_comment = [save for save in save_list if var_comment.get() == save[save.find('@')+1:]]
-            for save in save_list_with_comment[3:]:
-                SaveLoadManagerFunc.save_delete(var_game.get(), var_profile.get(), save, var_folder.get(), var_file.get())
-                save_list.remove(save)
+        for save in save_list_with_same_comment[3:]:
+            SaveLoadManagerFunc.save_delete(var_game.get(), var_profile.get(), save, var_folder.get(), var_file.get())
+            save_list.remove(save)
         combobox_save['values'] = save_list
-        if var_comment.get() != '' and save_list_with_comment != []:
-            combobox_save.current(save_list.index(save_list_with_comment[0]))
+        if var_comment.get() != '' and save_list_with_same_comment != []:
+            combobox_save.current(save_list.index(save_list_with_same_comment[0]))
         elif var_comment.get() == '' and save_list_no_comment != []:
             combobox_save.current(save_list.index(save_list_no_comment[0]))
         else:
