@@ -394,7 +394,6 @@
             await input_comment_init();
         });
         document.getElementById('button_save_new').addEventListener('click', async () => {
-            document.querySelector("output").value = "";
             const game = document.getElementById("select_game").value;
             const profile = document.getElementById("select_profile").value;
             const folder = document.getElementById("input_folder").value;
@@ -415,7 +414,6 @@
             await save_list_init_with_comment();
         });
         document.getElementById('button_save_load').addEventListener('click', async () => {
-            document.querySelector("output").value = "";
             const game = document.getElementById("select_game").value;
             const profile = document.getElementById("select_profile").value;
             const save = document.getElementById("select_save").value;
