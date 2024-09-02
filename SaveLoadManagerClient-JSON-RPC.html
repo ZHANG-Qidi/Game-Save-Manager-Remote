@@ -6,7 +6,8 @@
     <title>JSON-RPC Frontend</title>
     <style>
         .container {
-            width: 330px;
+            margin: auto;
+            width: 80%;
         }
 
         .container button {
@@ -28,7 +29,8 @@
         }
 
         .container_first_line {
-            width: 330px;
+            margin: auto;
+            width: 80%;
         }
 
         .container_first_line button {
@@ -329,9 +331,14 @@
         async function save_list_init_with_comment() {
             const data = await save_list_func(document.getElementById('select_game').value, document.getElementById('select_profile').value);
             var save_list = data.save_list
-            var save_list_with_comment = data.save_list.filter(obj => { if (obj.indexOf("@") != -1) return obj })
             var save_list_without_comment = data.save_list.filter(obj => { if (obj.indexOf("@") == -1) return obj })
-            for (let obj of save_list_with_comment.slice(3)) {
+            var save_list_with_comment = data.save_list.filter(obj => { if (obj.indexOf("@") != -1) return obj })
+            if (document.getElementById('input_folder').value != "") {
+                var save_list_with_same_comment = save_list_with_comment.filter(obj => { if (document.getElementById('input_comment').value == obj.slice(obj.indexOf("@") + 1)) { return obj } })
+            } else {
+                var save_list_with_same_comment = save_list_with_comment.filter(obj => { if (document.getElementById('input_comment').value == obj.slice(obj.indexOf("@") + 1, obj.indexOf("."))) { return obj } })
+            }
+            for (let obj of save_list_with_same_comment.slice(3)) {
                 await save_delete(obj);
                 save_list = save_list.filter(save => { if (save != obj) { return save } })
             }
@@ -347,21 +354,10 @@
                 opt.innerHTML = save;
                 select.appendChild(opt);
             }
-            save_list_without_comment = save_list.filter(obj => { if (obj.indexOf("@") == -1) return obj })
-            save_list_with_comment = save_list.filter(obj => { if (obj.indexOf("@") != -1) return obj })
             if (document.getElementById('input_comment').value == "" && save_list_without_comment.length > 0) {
                 select[save_list.indexOf(save_list_without_comment[0])].selected = true;
-            } else if (document.getElementById('input_comment').value != "" && save_list_with_comment.length > 0) {
-                if (document.getElementById('input_file').value != "") {
-                    var save_list_with_same_comment = save_list_with_comment.filter(obj => { if (document.getElementById('input_comment').value == obj.slice(obj.indexOf("@") + 1, obj.indexOf("."))) { return obj } })
-                } else if (document.getElementById('input_folder').value != "") {
-                    save_list_with_same_comment = save_list_with_comment.filter(obj => { if (document.getElementById('input_comment').value == obj.slice(obj.indexOf("@") + 1)) { return obj } })
-                }
-                if (save_list_with_same_comment.length > 0) {
-                    select[save_list.indexOf(save_list_with_same_comment[0])].selected = true;
-                } else {
-                    select[0].selected = true;
-                }
+            } else if (document.getElementById('input_comment').value != "" && save_list_with_same_comment.length > 0) {
+                select[save_list.indexOf(save_list_with_same_comment[0])].selected = true;
             } else {
                 select[0].selected = true;
             }
