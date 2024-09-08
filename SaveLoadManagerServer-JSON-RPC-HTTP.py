@@ -4,7 +4,10 @@ from jsonrpc import JSONRPCResponseManager, dispatcher
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import SaveLoadManagerFunc
 import json
-import multiprocessing 
+import multiprocessing
+import threading
+import sys
+
 
 def game_list_func():
     game_list = SaveLoadManagerFunc.game_list_func()
@@ -88,8 +91,12 @@ def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    thread_server_http = multiprocessing.Process(target=run)
-    thread_server_json_rpc = multiprocessing.Process(target=run_simple, args=('0.0.0.0', 4000, application))
+    if sys.platform.startswith('win'):
+        thread_server_http = threading.Thread(target=run, args=())
+        thread_server_json_rpc = threading.Thread(target=run_simple, args=('0.0.0.0', 4000, application),)
+    elif sys.platform.startswith('linux'):
+        thread_server_http = multiprocessing.Process(target=run, args=())
+        thread_server_json_rpc = multiprocessing.Process(target=run_simple, args=('0.0.0.0', 4000, application,))
     thread_server_http.start()
     thread_server_json_rpc.start()
     thread_server_http.join()
