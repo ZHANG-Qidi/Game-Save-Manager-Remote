@@ -95,31 +95,6 @@ def get_resource(request):
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        .container_first_line {
-            margin: auto;
-            width: 90%;
-        }
-
-        .container_first_line label {
-            width: 10%;
-            display: inline-block;
-            text-align: right;
-            padding: 2% 0.5%;
-            margin: 0.6% 0.1%;
-        }
-
-        .container_first_line input {
-            width: 63%;
-            padding: 2% 0.5%;
-            margin: 0.6% 0.1%;
-        }
-
-        .container_first_line button {
-            width: 20%;
-            padding: 2% 0.5%;
-            margin: 0.6% 0.1%;
-        }
-
         .container {
             margin: auto;
             width: 90%;
@@ -185,11 +160,6 @@ def get_resource(request):
             </div>
         </form>
     </dialog>
-    <div class="container_first_line">
-        <label>IP:</label>
-        <input id="input_IP" type="url" value="localhost">
-        <button id="button_read">Read</button><br>
-    </div>
     <div class="container">
         <button id="button_game_delete">Delete Game</button>
         <button id="button_profile_new">New Profile</button>
@@ -212,14 +182,18 @@ def get_resource(request):
     </div>
     <output></output>
     <script>
-        var ipAddress = '';
+        var ipAddress = 'localhost';
         if (window.location.hostname) {
             ipAddress = window.location.hostname;
         } else {
             ipAddress = window.location.host;
         }
-        document.getElementById('input_IP').value = ipAddress
         var button_current = "";
+        window.addEventListener("load", async (event) => {
+            await game_list_init();
+            await profile_list_init();
+            await save_list_init_without_comment();
+        });
         // If a browser doesn't support the dialog, then hide the
         // dialog contents by default.
         if (typeof document.getElementById("dialog").showModal !== "function") {
@@ -293,7 +267,7 @@ def get_resource(request):
                     params: [game],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -313,7 +287,7 @@ def get_resource(request):
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -334,7 +308,7 @@ def get_resource(request):
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -361,7 +335,7 @@ def get_resource(request):
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -375,7 +349,7 @@ def get_resource(request):
                 params: [],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -403,7 +377,7 @@ def get_resource(request):
                 params: [game],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -435,7 +409,7 @@ def get_resource(request):
                 params: [game, profile],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -505,11 +479,6 @@ def get_resource(request):
                 document.getElementById('input_comment').value = var_save.slice(var_save.indexOf("@") + 1, var_save.lastIndexOf("."))
             }
         }
-        document.getElementById('button_read').addEventListener('click', async () => {
-            await game_list_init();
-            await profile_list_init();
-            await save_list_init_without_comment();
-        });
         document.getElementById('select_game').addEventListener('change', async () => {
             await profile_list_init();
             await save_list_init_without_comment();
@@ -532,7 +501,7 @@ def get_resource(request):
                 params: [game, profile, folder, file, comment],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -552,7 +521,7 @@ def get_resource(request):
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
+            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
