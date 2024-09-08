@@ -36,13 +36,13 @@
   sudo pacman-key --populate
 #+end_src
 2. 安装 screen
-   #+begin_src bash
-     sudo pacman -S screen
-   #+end_src
+#+begin_src bash
+  sudo pacman -S screen
+#+end_src
 3. 启动服务端
-   #+begin_src bash
-     screen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP
-   #+end_src
+#+begin_src bash
+  screen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP
+#+end_src
 4. 使用脚本启动服务端
    1. 创建脚本
 #+begin_src bash
