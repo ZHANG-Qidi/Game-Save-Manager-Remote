@@ -54,15 +54,15 @@
         ./ServerStart-JSON-RPC-HTTP.sh
       #+end_src
 ** 开发环境需求
-- grpcio, grpcio-tools
-  #+begin_src bash
-    python -m pip install grpcio==1.66.0
-    python -m pip install grpcio-tools==1.66.0
-    python -m pip install protobuf==5.27.2
+#+begin_src bash
+  python -m pip install grpcio==1.66.0
+  python -m pip install grpcio-tools==1.66.0
+  python -m pip install protobuf==5.27.2
 
-    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
+  #当 SaveLoadManager.proto 更新时
+  python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
 
-    pip install Werkzeug
-    pip install json-rpc
-    pip install requests
-  #+end_src
+  python -m pip install Werkzeug
+  python -m pip install json-rpc
+  python -m pip install requests
+#+end_src
