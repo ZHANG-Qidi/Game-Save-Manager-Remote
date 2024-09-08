@@ -6,20 +6,9 @@
 *** 本地版
 - SaveLoadManager
 *** 远程管理
-**** gRPC
-- 服务端
-  - SaveLoadManagerServer
-- 客户端
-  - SaveLoadManagerClient
-**** JSON-RPC
-- 服务端
-  - SaveLoadManagerServer-JSON-RPC
-- 客户端
-  - SaveLoadManagerClient-JSON-RPC.html
 **** JSON-RPC-HTTP
 - 服务端
   - SaveLoadManagerServer-JSON-RPC-HTTP
-  - index.html
 - 客户端
   - 浏览器
     - 服务端IP:8000
@@ -53,6 +42,16 @@
       #+begin_src bash
         ./ServerStart-JSON-RPC-HTTP.sh
       #+end_src
+**** gRPC (不推荐)
+- 服务端
+  - SaveLoadManagerServer
+- 客户端
+  - SaveLoadManagerClient
+**** JSON-RPC (不推荐)
+- 服务端
+  - SaveLoadManagerServer-JSON-RPC
+- 客户端
+  - SaveLoadManagerClient-JSON-RPC.html
 ** 开发环境需求
 #+begin_src bash
   python -m pip install grpcio==1.66.0
