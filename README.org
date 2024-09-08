@@ -26,15 +26,15 @@
 ***** JSON-RPC-HTTP on Steam Deck
 1. 解锁 Steam Deck，使用 pacman 和 yay 安装软件包
    1. 按下 Steam 按键后, 切换到电源, 切换到 Steam Deck 桌面模式, 打开 Konsole, 输入 passwd 设置账户的密码
-      #+begin_src bash
-        passwd
-      #+end_src
+#+begin_src bash
+  passwd
+#+end_src
    2. 执行下面的命令
-      #+begin_src bash
-        sudo steamos-readonly disable
-        sudo pacman-key --init
-        sudo pacman-key --populate
-      #+end_src
+#+begin_src bash
+  sudo steamos-readonly disable
+  sudo pacman-key --init
+  sudo pacman-key --populate
+#+end_src
 2. 安装 screen
    #+begin_src bash
      sudo pacman -S screen
@@ -45,14 +45,14 @@
    #+end_src
 4. 使用脚本启动服务端
    1. 创建脚本
-      #+begin_src bash
-        touch ServerStart-JSON-RPC-HTTP.sh
-        echo -e '#!/bin/sh\nscreen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP' >> ServerStart-JSON-RPC-HTTP.sh
-      #+end_src
+#+begin_src bash
+  touch ServerStart-JSON-RPC-HTTP.sh
+  echo -e '#!/bin/sh\nscreen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP' >> ServerStart-JSON-RPC-HTTP.sh
+#+end_src
    2. 启动服务
-      #+begin_src bash
-        ./ServerStart-JSON-RPC-HTTP.sh
-      #+end_src
+#+begin_src bash
+  ./ServerStart-JSON-RPC-HTTP.sh
+#+end_src
 ** 开发环境需求
 #+begin_src bash
   python -m pip install grpcio==1.66.0
