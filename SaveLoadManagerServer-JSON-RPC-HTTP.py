@@ -182,12 +182,6 @@ def get_resource(request):
     </div>
     <output></output>
     <script>
-        var ipAddress = 'localhost';
-        if (window.location.hostname) {
-            ipAddress = window.location.hostname;
-        } else {
-            ipAddress = window.location.host;
-        }
         var button_current = "";
         window.addEventListener("load", async (event) => {
             await game_list_init();
@@ -267,7 +261,7 @@ def get_resource(request):
                     params: [game],
                     id: 0
                 };
-                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+                const response = await fetch(`/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -287,7 +281,7 @@ def get_resource(request):
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+                const response = await fetch(`/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -308,7 +302,7 @@ def get_resource(request):
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+                const response = await fetch(`/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -335,7 +329,7 @@ def get_resource(request):
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -349,7 +343,7 @@ def get_resource(request):
                 params: [],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -377,7 +371,7 @@ def get_resource(request):
                 params: [game],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -409,7 +403,7 @@ def get_resource(request):
                 params: [game, profile],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -501,7 +495,7 @@ def get_resource(request):
                 params: [game, profile, folder, file, comment],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -521,7 +515,7 @@ def get_resource(request):
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${ipAddress}:8000/jsonrpc`, {
+            const response = await fetch(`/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
