@@ -59,7 +59,7 @@
   python -m pip install grpcio-tools==1.66.0
   python -m pip install protobuf==5.27.2
 
-  #当 SaveLoadManager.proto 更新时
+  # 当 SaveLoadManager.proto 更新时
   python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
 
   python -m pip install Werkzeug
