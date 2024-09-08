@@ -65,6 +65,8 @@
 - JSON-RPC 客户端
   - SaveLoadManagerClient-JSON-RPC.html
   - 任意设备用浏览器打开 HTML 即可
+*** 添加 HTTP 服务器支持
+- 客户端输入 服务端IP:8000 即可登录页面管理存档
 ** 开发环境需求
 - grpcio, grpcio-tools
   #+begin_src bash
