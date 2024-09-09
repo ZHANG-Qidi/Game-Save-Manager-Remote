@@ -20,7 +20,7 @@ def main():
     label_title.pack(side=tkinter.TOP)
 
     def game_list_func():
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.game_list_func(SaveLoadManager_pb2.request_game_list(message=''))
             game_list = [game.strip() for game in response.game_list.split('\n') if game]
@@ -29,7 +29,7 @@ def main():
             return game_list
 
     def profile_list_func(game):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.profile_list_func(SaveLoadManager_pb2.request_profile_list(game=game))
             profile_list = [profile.strip() for profile in response.profile_list.split('\n') if profile]
@@ -38,7 +38,7 @@ def main():
             return (profile_list, response.folder, response.file)
 
     def save_list_func(game, profile):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.save_list_func(SaveLoadManager_pb2.request_save_list(game=game, profile=profile))
             save_list = [save.strip() for save in response.save_list.split('\n') if save]
@@ -47,38 +47,38 @@ def main():
             return save_list
 
     def game_delete(game):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.game_delete(SaveLoadManager_pb2.request_game_delete(game=game))
             print('message: {}'.format(response.message))
 
     def profile_new(game, profile):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.profile_new(SaveLoadManager_pb2.request_profile_new(game=game, profile=profile))
             print('message: {}'.format(response.message))
 
     def profile_delete(game, profile):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.profile_delete(SaveLoadManager_pb2.request_profile_delete(game=game, profile=profile))
             print('message: {}'.format(response.message))
 
     def save_new(game, profile, folder, file, comment):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.save_new(SaveLoadManager_pb2.request_save_new(game=game, profile=profile, comment=comment, file=file, folder=folder))
             print('message: {}'.format(response.message))
 
     def save_load(game, profile, save, folder, file):
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.save_load(SaveLoadManager_pb2.request_save_load(game=game, profile=profile, save=save, file=file, folder=folder))
             print('message: {}'.format(response.message))
 
     def save_delete(game, profile, save, folder, file):
         print('Delete Save: {}'.format(save))
-        with grpc.insecure_channel("{}:50051".format(var_ip.get())) as channel:
+        with grpc.insecure_channel("{}:8000".format(var_ip.get())) as channel:
             stub = SaveLoadManager_pb2_grpc.SaveLoadManagerStub(channel)
             response = stub.save_delete(SaveLoadManager_pb2.request_save_delete(game=game, profile=profile, save=save, file=file, folder=folder))
             print('message: {}'.format(response.message))

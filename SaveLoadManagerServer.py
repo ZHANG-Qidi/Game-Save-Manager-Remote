@@ -51,7 +51,7 @@ class SaveLoadManager(SaveLoadManager_pb2_grpc.SaveLoadManagerServicer):
 
 
 def serve():
-    port = "50051"
+    port = "8000"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     SaveLoadManager_pb2_grpc.add_SaveLoadManagerServicer_to_server(SaveLoadManager(), server)
     server.add_insecure_port("[::]:" + port)

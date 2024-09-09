@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+# ^\s*(?=\r?$)\n
 from werkzeug.wrappers import Request, Response
 from werkzeug.routing import Map, Rule
 from werkzeug.serving import run_simple
@@ -79,7 +82,7 @@ def post_resource(request):
     dispatcher['save_delete'] = save_delete
     dispatcher['save_load'] = save_load
     response = JSONRPCResponseManager.handle(request.data, dispatcher)
-    return Response(response.json, mimetype='application/json')
+    return Response(response.json, mimetype='application/json', headers=[["Access-Control-Allow-Origin", "*"]])
 
 
 @Request.application

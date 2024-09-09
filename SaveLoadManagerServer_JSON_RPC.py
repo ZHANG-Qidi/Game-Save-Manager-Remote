@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+# ^\s*(?=\r?$)\n
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
 from jsonrpc import JSONRPCResponseManager, dispatcher
@@ -81,4 +84,4 @@ def application(request):
 
 
 if __name__ == '__main__':
-    run_simple('0.0.0.0', 4000, application)
+    run_simple('0.0.0.0', 8000, application)

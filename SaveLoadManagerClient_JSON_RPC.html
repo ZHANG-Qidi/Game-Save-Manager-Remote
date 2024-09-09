@@ -1,4 +1,5 @@
 <!-- SaveLoadManagerClient-JSON-RPC.html -->
+<!-- ^\s*(?=\r?$)\n -->
 <!DOCTYPE html>
 <html>
 
@@ -198,7 +199,7 @@
                     params: [game],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -218,7 +219,7 @@
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -239,7 +240,7 @@
                     params: [game, profile],
                     id: 0
                 };
-                const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+                const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                     method: 'POST',
                     body: JSON.stringify(requestData)
                 });
@@ -266,7 +267,7 @@
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -280,7 +281,7 @@
                 params: [],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -308,7 +309,7 @@
                 params: [game],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -340,7 +341,7 @@
                 params: [game, profile],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -437,7 +438,7 @@
                 params: [game, profile, folder, file, comment],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });
@@ -457,7 +458,7 @@
                 params: [game, profile, save, folder, file],
                 id: 0
             };
-            const response = await fetch(`http://${document.getElementById('input_IP').value}:4000/jsonrpc`, {
+            const response = await fetch(`http://${document.getElementById('input_IP').value}:8000/jsonrpc`, {
                 method: 'POST',
                 body: JSON.stringify(requestData)
             });

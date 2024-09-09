@@ -1,5 +1,9 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+# ^\s*(?=\r?$)\n
 html_string = ('''
 <!-- SaveLoadManagerServer_JSON_RPC_HTTP.html -->
+<!-- ^\s*(?=\r?$)\n -->
 <!DOCTYPE html>
 <html>
 
