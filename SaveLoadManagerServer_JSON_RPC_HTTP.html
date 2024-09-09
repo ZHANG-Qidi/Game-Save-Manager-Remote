@@ -1,4 +1,4 @@
-<!-- SaveLoadManagerServer-JSON-RPC-HTTP.html -->
+<!-- SaveLoadManagerServer_JSON_RPC_HTTP.html -->
 <!DOCTYPE html>
 <html>
 
@@ -94,7 +94,6 @@
     </div>
     <output></output>
     <script>
-        var button_current = "";
         window.addEventListener("load", async (event) => {
             await game_list_init();
             await profile_list_init();
@@ -113,6 +112,7 @@
         document.getElementById("dialog").querySelector("#dialog_confirmBtn").addEventListener("click", () => {
             document.getElementById("dialog").querySelector("#dialog_confirmBtn").value = document.getElementById("dialog_input").value;
         })
+        var button_current = "";
         // "Update details" button opens the <dialog> modally
         document.getElementById("button_game_delete").addEventListener("click", () => {
             if (typeof document.getElementById("dialog").showModal === "function") {

@@ -6,13 +6,13 @@
 *** 本地版
 - SaveLoadManager
 *** 远程管理
-**** JSON-RPC-HTTP
+**** JSON-RPC
 - 服务端
-  - SaveLoadManagerServer-JSON-RPC-HTTP
+  - SaveLoadManagerServer_JSON_RPC_HTTP
 - 客户端
   - 浏览器
     - 服务端IP:8000
-***** JSON-RPC-HTTP on Steam Deck
+***** JSON-RPC on Steam Deck
 1. 解锁 Steam Deck，使用 pacman 和 yay 安装软件包
    1. 按下 Steam 按键后, 切换到电源, 切换到 Steam Deck 桌面模式, 打开 Konsole, 输入 passwd 设置账户的密码
       #+begin_src bash
@@ -30,17 +30,17 @@
    #+end_src
 3. 启动服务端
    #+begin_src bash
-     screen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP
+     screen -AmdS SaveLoadManagerServer_JSON_RPC_HTTP ./SaveLoadManagerServer_JSON_RPC_HTTP
    #+end_src
 4. 使用脚本启动服务端
    1. 创建脚本
       #+begin_src bash
-        touch ServerStart-JSON-RPC-HTTP.sh
-        echo -e '#!/bin/sh\nscreen -AmdS SaveLoadManagerServer-JSON-RPC-HTTP ./SaveLoadManagerServer-JSON-RPC-HTTP' >> ServerStart-JSON-RPC-HTTP.sh
+        touch ServerStart.sh
+        echo -e '#!/bin/sh\nscreen -AmdS SaveLoadManagerServer_JSON_RPC_HTTP ./SaveLoadManagerServer_JSON_RPC_HTTP' >> ServerStart.sh
       #+end_src
    2. 启动服务
       #+begin_src bash
-        ./ServerStart-JSON-RPC-HTTP.sh
+        ./ServerStart.sh
       #+end_src
 **** gRPC (不推荐)
 - 服务端
@@ -49,9 +49,9 @@
   - SaveLoadManagerClient
 **** JSON-RPC (不推荐)
 - 服务端
-  - SaveLoadManagerServer-JSON-RPC
+  - SaveLoadManagerServer_JSON_RPC
 - 客户端
-  - SaveLoadManagerClient-JSON-RPC.html
+  - SaveLoadManagerClient_JSON_RPC.html
 ** 开发环境需求
 #+begin_src bash
   python -m pip install grpcio==1.66.0

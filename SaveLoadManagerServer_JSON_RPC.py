@@ -8,7 +8,7 @@ import json
 def game_list_func():
     game_list = SaveLoadManagerFunc.game_list_func()
     # game_list = '\n'.join(game_list)
-    print('game_list:\n{}'.format(game_list))
+    print('game_list:\n{}'.format('\n'.join(game_list)))
     result = {}
     result['game_list'] = game_list
     result_str = json.dumps(result)
@@ -19,9 +19,9 @@ def profile_list_func(game):
     (profile_list, folder, file) = SaveLoadManagerFunc.profile_list_func(game)
     profile_list.sort()
     # profile_list = '\n'.join(profile_list)
-    print('folder: {}'.format(folder))
-    print('file: {}'.format(file))
-    print('profile_list:\n{}'.format(profile_list))
+    print('folder:\n{}'.format(folder))
+    print('file:\n{}'.format(file))
+    print('profile_list:\n{}'.format('\n'.join(profile_list)))
     result = {}
     result['profile_list'] = profile_list
     result['folder'] = folder
@@ -33,7 +33,7 @@ def profile_list_func(game):
 def save_list_func(game, profile):
     save_list = SaveLoadManagerFunc.save_list_func(game, profile)
     # save_list = '\n'.join(save_list)
-    print('save_list:\n{}'.format(save_list))
+    print('save_list:\n{}'.format('\n'.join(save_list)))
     result = {}
     result['save_list'] = save_list
     result_str = json.dumps(result)
