@@ -1,0 +1,49 @@
+* Game save remote control - Powered by gRPC or JSON-RPC
+** 功能简介
+- 本地及远程存档管理
+- 支持 Steam Deck
+** 使用方法
+*** 本地版
+- SaveLoadManager
+*** 远程管理
+**** JSON-RPC
+- 服务端
+  - SaveLoadManagerServer_JSON_RPC_HTTP
+- 客户端
+  - 服务端IP:8000
+**** gRPC (不推荐)
+- 服务端
+  - SaveLoadManagerServer
+- 客户端
+  - SaveLoadManagerClient
+**** JSON-RPC (不推荐)
+- 服务端
+  - SaveLoadManagerServer_JSON_RPC
+- 客户端
+  - SaveLoadManagerClient_JSON_RPC.html
+** 开发环境需求
+#+begin_src bash
+# 安装 gRPC
+python -m pip install grpcio
+python -m pip install grpcio-tools
+python -m pip install protobuf
+
+# 当 SaveLoadManager.proto 更新时
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManager.proto
+
+# 安装需要的库
+python -m pip install Werkzeug
+python -m pip install json-rpc
+python -m pip install requests
+python -m pip install mss
+#+end_src
+** 单文件编译命令
+#+begin_src bash
+# 安装 pyinstaller
+pip install pyinstaller
+
+# 打包成单个文件
+pyinstaller --onefile SaveLoadManager.py
+# or
+pyinstaller -F SaveLoadManager.py
+#+end_src

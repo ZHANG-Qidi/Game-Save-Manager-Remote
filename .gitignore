@@ -1,0 +1,9 @@
+*.spec
+.conda/
+.venv/
+.vscode/
+__pycache__/
+build/
+dist/
+SaveLoad/
+SaveLoadManager/

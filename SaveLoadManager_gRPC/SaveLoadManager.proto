@@ -1,0 +1,119 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+service SaveLoadManager {
+  rpc game_list_func (request_game_list) returns (response_game_list) {}
+  rpc profile_list_func (request_profile_list) returns (response_profile_list) {}
+  rpc save_list_func (request_save_list) returns (response_save_list) {}
+
+  rpc game_delete (request_game_delete) returns (response_game_delete) {}
+
+  rpc profile_new (request_profile_new) returns (response_profile_new) {}
+  rpc profile_delete (request_profile_delete) returns (response_profile_delete) {}
+
+  rpc save_new (request_save_new) returns (response_save_new) {}
+  rpc save_delete (request_save_delete) returns (response_save_delete) {}
+  rpc save_load (request_save_load) returns (response_save_load) {}
+}
+
+message request_game_list {
+    string message = 1;
+}
+
+message response_game_list {
+    string game_list = 1;
+}
+
+message request_profile_list {
+    string game = 1;
+}
+
+message response_profile_list {
+    string profile_list = 1;
+    string folder = 2;
+    string file = 3;
+}
+
+message request_save_list {
+    string game = 1;
+    string profile = 2;
+}
+
+message response_save_list {
+    string save_list = 1;
+}
+
+message request_game_delete {
+    string game = 1;
+}
+
+message response_game_delete {
+    string message = 1;
+}
+
+message request_profile_new {
+    string game = 1;
+    string profile = 2;
+}
+
+message response_profile_new {
+    string message = 1;
+}
+
+message request_profile_delete {
+    string game = 1;
+    string profile = 2;
+}
+
+message response_profile_delete {
+    string message = 1;
+}
+
+message request_save_new {
+    string game = 1;
+    string profile = 2;
+    string comment = 3;
+    string folder = 4;
+    string file = 5;
+}
+
+message response_save_new {
+    string message = 1;
+}
+
+message request_save_delete {
+    string game = 1;
+    string profile = 2;
+    string save = 3;
+    string folder = 4;
+    string file = 5;
+}
+
+message response_save_delete {
+    string message = 1;
+}
+
+message request_save_load {
+    string game = 1;
+    string profile = 2;
+    string save = 3;
+    string file = 4;
+    string folder = 5;
+}
+
+message response_save_load {
+    string message = 1;
+}
