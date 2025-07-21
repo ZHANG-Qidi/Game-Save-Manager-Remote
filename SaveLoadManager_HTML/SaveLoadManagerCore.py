@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 import os
 import shutil
 import pathlib
 import datetime
-import mss
 from configparser import ConfigParser
 
 
@@ -44,7 +42,6 @@ def save_list_func(game, profile):
         if 0 == len(save_list):
             save_list = ['']
     save_list.sort(reverse=True)
-    save_list = [save for save in save_list if 'SCREENSHOT' not in save]
     return save_list
 
 
@@ -97,14 +94,6 @@ def find_all_file_func(base):
             yield fullname
 
 
-def capture_fullscreen(output_file="screenshot.png"):
-    with mss.mss() as sct:
-        monitor = sct.monitors[0]
-        screenshot = sct.grab(monitor)
-        mss.tools.to_png(screenshot.rgb, screenshot.size, output=output_file)
-        print(f"Save screenshot to: {output_file}")
-
-
 def save_new(game, profile, folder, file, comment):
     if game == '' or profile == '':
         return 'NG'
@@ -123,7 +112,6 @@ def save_new(game, profile, folder, file, comment):
         else:
             folder_target = './SaveLoad/{}/{}/{}@{}'.format(game, profile, str_modified_time_last, comment)
         if not os.path.exists(folder_target):
-            capture_fullscreen(f'{folder_target}.SCREENSHOT.png')
             print('Save New: {}'.format(os.path.basename(folder_target)))
             shutil.copytree(folder_source, folder_target)
     if file != '':
@@ -137,7 +125,6 @@ def save_new(game, profile, folder, file, comment):
         else:
             file_target = './SaveLoad/{}/{}/{}@{}{}'.format(game, profile, str_modified_time_last, comment, pathlib.Path(file_source).suffix)
         if not os.path.exists(file_target):
-            capture_fullscreen(f'{file_target}.SCREENSHOT.png')
             print('Save New: {}'.format(os.path.basename(file_target)))
             shutil.copy2(file_source, file_target)
     return 'OK'

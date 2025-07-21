@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 import json
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple

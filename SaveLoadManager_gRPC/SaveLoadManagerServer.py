@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 from concurrent import futures
 import logging
 import grpc

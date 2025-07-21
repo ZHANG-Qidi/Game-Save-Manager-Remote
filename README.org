@@ -35,7 +35,6 @@ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. SaveLoadManag
 python -m pip install Werkzeug
 python -m pip install json-rpc
 python -m pip install requests
-python -m pip install mss
 #+end_src
 ** 单文件编译命令
 #+begin_src bash

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 from __future__ import print_function
 import grpc
 import SaveLoadManager_pb2

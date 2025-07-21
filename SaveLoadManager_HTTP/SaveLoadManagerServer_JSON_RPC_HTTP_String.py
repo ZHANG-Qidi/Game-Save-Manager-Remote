@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 html_string = ('''
 <!-- SaveLoadManagerServer_JSON_RPC_HTTP.html -->
-<!-- ^\s*(?=\r?$)\n -->
 <!DOCTYPE html>
 <html>
 
@@ -63,13 +61,6 @@ html_string = ('''
             margin: 0.6% 0.1%;
         }
 
-        .container .div_screenshot img {
-            width: 80%;
-            height: auto;
-            padding: 2% 0.5%;
-            margin: 0.6% auto;
-            display: block;
-        }
     </style>
 </head>
 
@@ -106,7 +97,6 @@ html_string = ('''
         <input id="input_comment" type="text"><br>
         <label>Save:</label>
         <select id="select_save"></select><br>
-        <div class="div_screenshot" id="div_screenshot"></div><br>
     </div>
     <output></output>
     <script>
@@ -246,18 +236,6 @@ html_string = ('''
                 await save_list_init_with_comment();
             }
         });
-        async function image_show(url, containerId) {
-            const container = document.getElementById(containerId);
-            const img = document.createElement('img');
-            img.src = url;
-            img.alt = "SCREENSHOT";
-            img.onerror = () => {
-                img.alt = "NO SCREENSHOT";
-                img.style.border = "2px dashed red";
-            };
-            container.innerHTML = '';
-            container.appendChild(img);
-        }
         async function save_delete(save) {
             const game = document.getElementById("select_game").value;
             const profile = document.getElementById("select_profile").value;
@@ -404,9 +382,6 @@ html_string = ('''
             const var_save = document.getElementById('select_save').value
             const var_game = document.getElementById('select_game').value
             const var_profile = document.getElementById('select_profile').value
-            const url = `/SaveLoad/${var_game}/${var_profile}/${var_save}.SCREENSHOT`
-            // await image_change(url)
-            await image_show(url, "div_screenshot")
             if (var_save.indexOf("@") == -1) {
                 document.getElementById('input_comment').value = ""
                 return

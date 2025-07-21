@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 import pathlib
 import json
 import SaveLoadManagerServer_JSON_RPC_HTTP_String
@@ -87,18 +86,9 @@ def post_resource(request):
 
 @Request.application
 def get_resource(request):
-    path = request.environ['values'].get('resource_path', '')
     if request.path == "/":
         result = SaveLoadManagerServer_JSON_RPC_HTTP_String.html_string
         return Response(''.join(result), mimetype='text/html')
-    elif "SCREENSHOT" in path:
-        image_type_list = ['jpg', 'png']
-        for image_type in image_type_list:
-            file_path = pathlib.Path(f"./{path}.{image_type}")
-            if file_path.is_file():
-                with open(file_path, 'rb') as image:
-                    IMAGE_DATA = image.read()
-                return Response(IMAGE_DATA, mimetype=f'image/{image_type}')
     return redirect('/')
 
 

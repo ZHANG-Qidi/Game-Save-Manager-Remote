@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-# ^\s*(?=\r?$)\n
 import tkinter
 import tkinter.filedialog
 import tkinter.ttk
